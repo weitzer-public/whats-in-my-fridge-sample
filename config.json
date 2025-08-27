@@ -1,4 +1,4 @@
 {
-  "gcp_project_id": "your-gcp-project-id",
+  "gcp_project_id": "quacktastic-waffle",
   "gemini_api_key_secret_name": "projects/710019748844/secrets/weitzer-ai-studio-key"
 }
