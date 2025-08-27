@@ -9,19 +9,29 @@ This web application suggests a simple recipe based on a list of ingredients you
 2.  **Download the files:**
     You can clone this repository or download the files directly.
 
-3.  **Initialize the module:**
+3.  **Configure the Application:**
+    - Open the `config.json` file.
+    - Replace the placeholder values for `gcp_project_id` and `gemini_api_key_secret_name` with your actual Google Cloud project ID and the full resource name of your Secret Manager secret.
+
+4.  **Authenticate with Google Cloud:**
+    Use the following command to authenticate your local environment with Google Cloud. This will allow the application to access Secret Manager.
+    ```bash
+    gcloud auth application-default login
+    ```
+
+5.  **Initialize the module:**
     Open your terminal, navigate to the project directory, and run the following command to download the dependencies:
     ```bash
     go mod tidy
     ```
 
-4.  **Run the application:**
+6.  **Run the application:**
     Execute the following command to start the web server:
     ```bash
     go run .
     ```
 
-5.  **Access the application:**
+7.  **Access the application:**
     Open your web browser and go to [http://localhost:8080](http://localhost:8080).
 
 ## How to use

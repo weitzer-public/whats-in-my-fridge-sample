@@ -1,0 +1,4 @@
+{
+  "gcp_project_id": "your-gcp-project-id",
+  "gemini_api_key_secret_name": "projects/your-gcp-project-id/secrets/your-secret-name/versions/latest"
+}
