@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"html/template"
 	"log"
@@ -13,6 +12,7 @@ import (
 // Server holds the Gemini client.
 type Server struct {
 	geminiClient *genai.Client
+	config       *Config
 }
 
 // PageData holds all the data for the template.
@@ -46,7 +46,7 @@ func (s *Server) suggestRecipeHandler(w http.ResponseWriter, r *http.Request) {
 
 	prompt := fmt.Sprintf("Generate a simple recipe using primarily these ingredients: %s. Include a title, a bulleted list of ingredients, and numbered instructions.", ingredients)
 
-	model := s.geminiClient.GenerativeModel("gemini-pro")
+	model := s.geminiClient.GenerativeModel(s.config.GeminiModel)
 	resp, err := model.GenerateContent(r.Context(), genai.Text(prompt))
 	if err != nil {
 		log.Printf("Error generating content: %v", err)

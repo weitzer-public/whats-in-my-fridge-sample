@@ -11,25 +11,20 @@ import (
 // main is the entry point for the application.
 // It sets up the HTTP handlers and starts the web server.
 func main() {
-	ctx := context.Background()
-
 	config, err := loadConfig("config.json")
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	apiKey, err := accessSecretVersion(ctx, config.GeminiAPIKeySecretName)
-	if err != nil {
-		log.Fatalf("Failed to access secret version: %v", err)
-	}
-
-	client, err := genai.NewClient(ctx, config.GCPProjectID, "us-central1", genai.WithAPIKey(apiKey))
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, config.GCPProjectID, "us-central1")
 	if err != nil {
 		log.Fatalf("Failed to create Gemini client: %v", err)
 	}
 
 	server := &Server{
 		geminiClient: client,
+		config:       config,
 	}
 
 	http.HandleFunc("/", rootHandler)

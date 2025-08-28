@@ -10,6 +10,7 @@ import (
 type Config struct {
 	GCPProjectID           string `json:"gcp_project_id"`
 	GeminiAPIKeySecretName string `json:"gemini_api_key_secret_name"`
+	GeminiModel            string `json:"gemini_model"`
 }
 
 // loadConfig reads the configuration from the given file path.
